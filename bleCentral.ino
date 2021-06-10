@@ -260,7 +260,7 @@ void loop()
   display.setTextSize(1);
   display.setTextColor(SH110X_WHITE, SH110X_BLACK);
   display.setCursor(0,0);  
-  
+    
   // Cycle through display of each sensors' readings
   // Print out to display
   for(prph_info_t sensor: prphs) {
@@ -269,6 +269,7 @@ void loop()
       display.setTextColor(SH110X_WHITE, SH110X_BLACK);
       display.setCursor(0,0);
       display.print("Current Temp: "); display.print(sensor.currentTemp); display.println(" F");
+      Serial.println();
       Serial.print("Current Temp: "); Serial.print(sensor.currentTemp); Serial.println(" F");
       display.println("");
   
@@ -280,7 +281,9 @@ void loop()
       Serial.print("Minimum Temp: "); Serial.print(sensor.minTemp); Serial.println(" F");
       display.print("Maximum Temp: "); display.print(sensor.maxTemp); display.println(" F");
       Serial.print("Maximum Temp: "); Serial.print(sensor.maxTemp); Serial.println(" F");
-    
+
+      Serial.print("Measurements: "); Serial.println(sensor.measurements);
+
       // Print threshold breached warning if true
       if(sensor.thresholdBreached) {
         display.println("");
